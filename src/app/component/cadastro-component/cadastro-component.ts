@@ -1,7 +1,6 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { Pessoa } from '../../models/pessoa';
 import { CadastroService } from '../../service/cadastro-service';
 
@@ -12,121 +11,119 @@ import { CadastroService } from '../../service/cadastro-service';
   templateUrl: './cadastro-component.html',
   styleUrl: './cadastro-component.css',
 })
-
-export class Cadastro {
-    idpessoa = 0;
-    nome = '';
-    cpf = 0;
-    data_nascimento = '';
-    sexo = '';
-    email = '';
-    telefone = 0;
-    ativo_pessoa = '';
-
-    editar = false;
-    idPessoa = 0;
-
+export class Cadastro implements OnInit {
+  idPessoa = 0;
+  nome = '';
+  cpf = 0;
+  dataNascimento = '';
+  sexo = '';
+  email = '';
+  telefone = 0;
+  ativoPessoa = 'S';
+  cep = '';
+  numero = '';
+  complemento = '';
+  editar = false;
+  erro = '';
+  mensagem = '';
 
   constructor(
     private cadastroService: CadastroService,
     private route: ActivatedRoute,
     private router: Router,
-    private cdr: ChangeDetectorRef
   ) {}
 
-  ngOnInit() {
-    this.idPessoa = Number(this.route.snapshot.paramMap.get('id'));
-
-    if (this.idPessoa > 0) {
+  ngOnInit(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    if (id > 0) {
       this.editar = true;
-      this.carregaCampo(this.idPessoa);
+      this.carregaCampo(id);
     }
   }
 
-  exibeDados() {
-    console.log(this.idpessoa, this.nome, this.cpf, this.data_nascimento, this.sexo, this.email, this.telefone, this.ativo_pessoa);
-  }
-
-  carregaCampo(idPessoa: number) {
+  carregaCampo(idPessoa: number): void {
     this.cadastroService.listarPessoa(idPessoa).subscribe({
-      next: (objPessoa) => {
-        this.idPessoa = objPessoa.idpessoa || idPessoa;
-        this.nome = objPessoa.nome;
-        this.cpf = objPessoa.cpf;
-        this.data_nascimento = objPessoa.data_nascimento;
-        this.sexo = objPessoa.sexo;
-        this.email = objPessoa.email;
-        this.telefone = objPessoa.telefone;
-
-        this.cdr.detectChanges();
+      next: (pessoa) => {
+        this.idPessoa = pessoa.idPessoa;
+        this.nome = pessoa.nome ?? '';
+        this.cpf = pessoa.cpf ?? 0;
+        this.dataNascimento = pessoa.dataNascimento ?? '';
+        this.sexo = pessoa.sexo ?? '';
+        this.email = pessoa.email ?? '';
+        this.telefone = pessoa.telefone ?? 0;
+        this.ativoPessoa = pessoa.ativoPessoa ?? 'S';
+        const endereco = pessoa.enderecos?.[0];
+        this.cep = endereco?.cep ?? '';
+        this.numero = endereco?.numero ?? '';
+        this.complemento = endereco?.complemento ?? '';
       },
-      error: (msgErro) => {
-        console.log('Erro ao listar a pessoa ', msgErro);
+      error: () => {
+        this.erro = 'Não foi possível carregar os dados do cliente.';
       },
     });
   }
 
-  enviaDadosPessoa() {
-    const pessoaParaSalvar = new Pessoa();
+  enviaDadosPessoa(): void {
+    this.erro = '';
+    this.mensagem = '';
 
-    pessoaParaSalvar.idpessoa = this.idpessoa;
-    pessoaParaSalvar.nome = this.nome;
-    pessoaParaSalvar.cpf = this.cpf;
-    pessoaParaSalvar.data_nascimento = this.data_nascimento;
-    pessoaParaSalvar.sexo = this.email;
-    pessoaParaSalvar.telefone = this.telefone;
-
-    if (this.editar) {
-      pessoaParaSalvar.idpessoa = this.idPessoa;
-
-      this.cadastroService.alterarPessoa(pessoaParaSalvar).subscribe({
-        next: (resposta) => {
-          console.log('Pessoa alterada com sucesso', resposta);
-        },
-        error: (msgErro) => {
-          console.log('Erro ao alterar a pessoa ', msgErro);
-        },
-      });
-    } else {
-      this.cadastroService.adicionarPessoa(pessoaParaSalvar).subscribe({
-        next: (resposta) => {
-          console.log('Pessoa cadastrada com sucesso', resposta);
-        },
-        error: (msgErro) => {
-          console.log('Erro ao cadastrar a pessoa ', msgErro);
-        },
-      });
+    if (!this.nome.trim() || !this.email.trim() || !this.sexo || !this.cpf) {
+      this.erro = 'Preencha nome, CPF, sexo e e-mail.';
+      return;
     }
 
-    this.limparAtributos();
-  }
+    const pessoa = new Pessoa();
+    pessoa.idPessoa = this.idPessoa;
+    pessoa.nome = this.nome.trim();
+    pessoa.cpf = Number(this.cpf);
+    pessoa.dataNascimento = this.dataNascimento;
+    pessoa.sexo = this.sexo;
+    pessoa.email = this.email.trim();
+    pessoa.telefone = Number(this.telefone);
+    pessoa.ativoPessoa = this.ativoPessoa || 'S';
+    if (this.cep.trim() && this.numero.trim()) {
+      pessoa.enderecos = [{
+        cep: this.cep.trim(),
+        numero: this.numero.trim(),
+        complemento: this.complemento.trim(),
+      }];
+    }
 
-  listaPessoa(idPessoa: number) {
-    this.cadastroService.listarPessoa(idPessoa).subscribe({
-      next: (dados) => {
-        console.table(dados);
+    const requisicao = this.editar
+      ? this.cadastroService.alterarPessoa(pessoa)
+      : this.cadastroService.adicionarPessoa(pessoa);
+
+    requisicao.subscribe({
+      next: () => {
+        this.mensagem = this.editar
+          ? 'Cliente alterado com sucesso!'
+          : 'Cliente cadastrado com sucesso!';
+        if (!this.editar) this.limparAtributos();
       },
-      error: (msgErro) => {
-        console.log('Erro ao listar pessoas ', msgErro);
+      error: (erro) => {
+        this.erro = erro?.status === 409
+          ? 'Já existe um cliente com esse CPF ou e-mail.'
+          : 'Não foi possível salvar o cliente. Verifique os dados e se a API está em execução.';
       },
     });
   }
 
-  limparAtributos() {
-    this.idpessoa = 0;
+  limparAtributos(): void {
+    this.idPessoa = 0;
     this.nome = '';
     this.cpf = 0;
-    this.data_nascimento = '';
+    this.dataNascimento = '';
     this.sexo = '';
     this.email = '';
     this.telefone = 0;
-    this.ativo_pessoa = ''
+    this.ativoPessoa = 'S';
+    this.cep = '';
+    this.numero = '';
+    this.complemento = '';
     this.editar = false;
   }
 
-  voltarParaLista() {
-    this.router.navigate(['/listaproduto']);
+  voltarParaLista(): void {
+    this.router.navigate(['/listapessoa']);
   }
 }
-
-

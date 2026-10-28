@@ -6,38 +6,28 @@ import { Pessoa } from '../models/pessoa';
 @Injectable({
   providedIn: 'root',
 })
-
 export class CadastroService {
+  private readonly urlApi = 'http://localhost:5295/api/PessoaEndereco';
+
   constructor(private http: HttpClient) {}
 
   adicionarPessoa(pessoa: Pessoa): Observable<Pessoa> {
-    const urlApi = '';
-
-    return this.http.post<Pessoa>(urlApi, pessoa);
+    return this.http.post<Pessoa>(this.urlApi, pessoa);
   }
 
   listarPessoas(): Observable<Pessoa[]> {
-    const urlApi = '';
-
-    return this.http.get<Pessoa[]>(urlApi);
+    return this.http.get<Pessoa[]>(this.urlApi);
   }
 
-  listarPessoa(idpessoa: number): Observable<Pessoa> {
-    const urlApi = ``;
-
-    return this.http.get<Pessoa>(urlApi);
+  listarPessoa(idPessoa: number): Observable<Pessoa> {
+    return this.http.get<Pessoa>(`${this.urlApi}/${idPessoa}`);
   }
 
-  excluirPessoa(pessoas: Pessoa): Observable<Pessoa> {
-    const urlApi = ``;
-
-    return this.http.delete<Pessoa>(urlApi);
+  excluirPessoa(pessoa: Pessoa): Observable<void> {
+    return this.http.delete<void>(`${this.urlApi}/${pessoa.idPessoa}`);
   }
 
-
-  alterarPessoa(produtos: Pessoa): Observable<Pessoa> {
-    const urlApi = ``;
-
-    return this.http.put<Pessoa>(urlApi, Pessoa);
+  alterarPessoa(pessoa: Pessoa): Observable<void> {
+    return this.http.put<void>(`${this.urlApi}/${pessoa.idPessoa}`, pessoa);
   }
 }

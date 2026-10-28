@@ -1,27 +1,29 @@
 <div id="div-lista">
-    <h2>Lista de Clientes</h2>
+  <h2>Lista de Clientes</h2>
 
-    <div class="acao-topo">
-        <button type="button" class="btn-voltar" (click)="voltarParaHome()">Voltar para Home</button>
-    </div>
+  <div class="acao-topo">
+    <button type="button" class="btn-voltar" (click)="voltarParaHome()">Voltar para Home</button>
+  </div>
 
-      <div id="lista-produto">
-        @for (elem of listaPessoa(); track elem.idpessoa) {
-        <div class="item-cliente">
-            <span class="dados-cliente">
-                ID: {{elem.idpessoa}} | Nome: {{elem.nome}} | CPF: {{elem.cpf}} | Sexo: {{elem.sexo}} | Email: {{elem.email}} | Telefone: {{elem.telefone}} | Situação: {{elem.ativo_pessoa}}
-            </span>
-            <span class="links-lista">
-                <a class="lnk-editar" (click)="buscarPessoa(elem)"> Editar </a>
-                <a class="lnk-excluir" (click)="excluirPessoa(elem)"> Excluir </a>
-            </span>
-        </div>
-        }@empty{
-        <div class="div-item-produto">
-            NENHUM CLIENTE REGISTRADO
-        </div>
-        }
-    </div>
+  @if (erro) {
+    <p role="alert">{{ erro }}</p>
+  }
 
-
+  <div id="lista-produto">
+    @for (elem of listaPessoa(); track elem.idPessoa) {
+      <div class="item-cliente">
+        <span class="dados-cliente">
+          ID: {{ elem.idPessoa }} | Nome: {{ elem.nome }} | CPF: {{ elem.cpf }} |
+          Sexo: {{ elem.sexo }} | Email: {{ elem.email }} | Telefone: {{ elem.telefone }} |
+          Situação: {{ elem.ativoPessoa }}
+        </span>
+        <span class="links-lista">
+          <button type="button" class="lnk-editar" (click)="buscarPessoa(elem)">Editar</button>
+          <button type="button" class="lnk-excluir" (click)="excluirPessoa(elem)">Excluir</button>
+        </span>
+      </div>
+    } @empty {
+      <div class="div-item-produto">Nenhum cliente registrado.</div>
+    }
+  </div>
 </div>

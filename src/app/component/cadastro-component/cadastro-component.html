@@ -1,35 +1,49 @@
 <div id="div-form">
-    <h2>Cadastro</h2>
+  <h2>{{ editar ? 'Editar cliente' : 'Cadastro de cliente' }}</h2>
 
-    <form id="form-cadastro" (ngSubmit)="enviaDadosPessoa()">
+  @if (mensagem) { <p role="status">{{ mensagem }}</p> }
+  @if (erro) { <p role="alert">{{ erro }}</p> }
 
-        <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome" class="input01" [(ngModel)] = "nome"  placeholder="Informe o nome do cliente">
+  <form id="form-cadastro" (ngSubmit)="enviaDadosPessoa()">
+    <label for="nome">Nome</label>
+    <input type="text" name="nome" id="nome" class="input01"
+      [(ngModel)]="nome" required maxlength="120" placeholder="Informe o nome do cliente">
 
-        <label for="cpf">CPF</label>
-        <input type="text" name="cpf" id="cpf" class="input01" [(ngModel)] = "cpf" required maxlength="11" placeholder="Informe o CPF do cliente">
+    <label for="cpf">CPF (somente números)</label>
+    <input type="number" name="cpf" id="cpf" class="input01"
+      [(ngModel)]="cpf" required placeholder="Informe o CPF do cliente">
 
-        <label for="nascimento">Data de Nascimento</label>
-        <input type="date" name="data_nascimento" id="data_nascimento" class="input01" [(ngModel)] = "data_nascimento" placeholder="Informe a data de nascimento do cliente">
+    <label for="dataNascimento">Data de nascimento</label>
+    <input type="date" name="dataNascimento" id="dataNascimento" class="input01"
+      [(ngModel)]="dataNascimento" required>
 
-        <label for="sexo">Sexo</label>
-        <select name = "sexo" id="sexo" class="input01" [(ngModel)] = "sexo" placeholdder = "Selecione o sexo">
-        <option value="masculino">Masculino</option>
-        <option value="feminino">Feminino</option>
-        </select>
-        
+    <label for="sexo">Sexo</label>
+    <select name="sexo" id="sexo" class="input01" [(ngModel)]="sexo" required>
+      <option value="">Selecione</option>
+      <option value="masculino">Masculino</option>
+      <option value="feminino">Feminino</option>
+      <option value="outro">Outro</option>
+    </select>
 
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email" class="input01" [(ngModel)] = "email" placeholder="Informe o email do cliente">
+    <label for="email">E-mail</label>
+    <input type="email" name="email" id="email" class="input01"
+      [(ngModel)]="email" required maxlength="120" placeholder="Informe o e-mail do cliente">
 
-        <label for="telefone">Telefone</label>
-        <input type="number" name="telefone" id="telefone" class="input01" [(ngModel)] = "telefone" placeholder="Informe o telefone do cliente">
-        
+    <label for="telefone">Telefone (somente números)</label>
+    <input type="number" name="telefone" id="telefone" class="input01"
+      [(ngModel)]="telefone" required placeholder="Informe o telefone do cliente">
 
-        <button type="submit">{{ editar ? 'Salvar alterações' : 'Salvar' }}</button>
-        <button type="button" class="btn-voltar" (click)="voltarParaLista()">Ir para Clientes</button>
+    <h3>Endereço (opcional)</h3>
+    <label for="cep">CEP</label>
+    <input type="text" name="cep" id="cep" class="input01" [(ngModel)]="cep" maxlength="9">
 
-    </form>
+    <label for="numero">Número</label>
+    <input type="text" name="numero" id="numero" class="input01" [(ngModel)]="numero">
+
+    <label for="complemento">Complemento</label>
+    <input type="text" name="complemento" id="complemento" class="input01" [(ngModel)]="complemento">
+
+    <button type="submit">{{ editar ? 'Salvar alterações' : 'Salvar' }}</button>
+    <button type="button" class="btn-voltar" (click)="voltarParaLista()">Ir para Clientes</button>
+  </form>
 </div>
-
-        
