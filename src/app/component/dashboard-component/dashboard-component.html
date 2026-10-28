@@ -1,0 +1,10 @@
+<main class="dashboard"><header><p>ESTÉTICA &amp; BEM-ESTAR</p><h1>Painel administrativo</h1><span>Resumo com dados da API</span></header>
+@if(carregando){<p>Carregando indicadores...</p>} @if(erro){<p class="erro" role="alert">{{erro}}</p>}
+@if(!carregando&&!erro){<section class="cards">
+<article><span>Clientes</span><strong>{{resumo.clientes}}</strong><a routerLink="/listapessoa">Ver clientes</a></article>
+<article><span>Produtos</span><strong>{{resumo.produtos}}</strong><a routerLink="/catalogo">Ver catálogo</a></article>
+<article><span>Serviços</span><strong>{{resumo.servicos}}</strong></article>
+<article><span>Pedidos</span><strong>{{resumo.pedidos}}</strong><a routerLink="/admin/pedidos">Gerenciar pedidos</a></article>
+<article><span>Unidades em estoque</span><strong>{{resumo.estoqueUnidades}}</strong><a routerLink="/estoque">Consultar estoque</a></article>
+<article><span>Valor estimado do estoque</span><strong>{{resumo.valorEstoque | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}</strong></article></section>}
+<nav><a routerLink="/home">Home</a><a routerLink="/catalogo">Catálogo</a><a routerLink="/carrinho">Carrinho</a><a routerLink="/pedidos">Pedidos do cliente</a><a routerLink="/estoque">Estoque</a><a routerLink="/estoque/entrada">Entrada de mercadorias</a></nav></main>
