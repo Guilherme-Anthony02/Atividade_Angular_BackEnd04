@@ -1,0 +1,16 @@
+.estoque { max-width:1150px; margin:0 auto; padding:32px 20px; color:#24332c; }
+.topo { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:28px; }
+.marca { color:#38745a; font-size:.8rem; font-weight:700; letter-spacing:.12em; }
+.topo a { color:#2e624b; }
+.busca { display:flex; align-items:end; flex-wrap:wrap; gap:10px; margin-bottom:22px; padding:18px; background:#f0f6f1; border-radius:12px; }
+.busca label { display:grid; gap:6px; }
+input { min-width:220px; padding:10px; border:1px solid #bdcbc2; border-radius:7px; }
+button { padding:10px 14px; border:0; border-radius:7px; background:#2e624b; color:white; cursor:pointer; }
+button.secundario { background:#6c7b71; }
+.tabela { overflow-x:auto; border:1px solid #dce5df; border-radius:10px; }
+table { width:100%; border-collapse:collapse; background:white; }
+th,td { padding:13px; border-bottom:1px solid #e3eae5; text-align:left; white-space:nowrap; }
+th { background:#f0f6f1; }
+td small { display:block; max-width:240px; color:#65746b; white-space:normal; }
+.erro { color:#a32e2e; }
+@media(max-width:700px) { .topo { align-items:flex-start; flex-direction:column; } }
