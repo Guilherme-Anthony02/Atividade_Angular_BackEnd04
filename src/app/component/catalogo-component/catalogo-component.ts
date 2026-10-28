@@ -1,3 +1,4 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CatalogoService } from '../../service/catalogo-service';
@@ -6,7 +7,7 @@ import { ProdutoCatalogo } from '../../models/produto-catalogo';
 @Component({
   selector: 'app-catalogo-component',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, CurrencyPipe],
   templateUrl: './catalogo-component.html',
   styleUrl: './catalogo-component.css',
 })
