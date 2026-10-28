@@ -17,3 +17,5 @@ input { display:block; width:100%; box-sizing:border-box; margin-top:6px; paddin
 .vazio { padding:40px 20px; text-align:center; border:1px dashed #bdcbc2; border-radius:12px; }
 .sucesso { color:#246b43; } .erro { color:#a32e2e; }
 @media (max-width:700px) { .topo { align-items:flex-start; flex-direction:column; } .item { grid-template-columns:1fr 1fr; } }
+
+.finalizar { display:block; margin-top:12px; padding:12px; text-align:center; text-decoration:none; border-radius:8px; background:#2e624b; color:white; font-weight:600; }
