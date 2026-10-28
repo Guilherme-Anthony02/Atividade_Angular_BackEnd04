@@ -9,6 +9,7 @@ import { PedidosComponent } from './component/pedidos-component/pedidos-componen
 import { AdminPedidosComponent } from './component/admin-pedidos-component/admin-pedidos-component';
 import { DashboardComponent } from './component/dashboard-component/dashboard-component';
 import { EntradaEstoqueComponent } from './component/entrada-estoque-component/entrada-estoque-component';
+import { ServicosComponent } from './component/servicos-component/servicos-component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,4 +24,5 @@ export const routes: Routes = [
   { path: 'admin/pedidos', component: AdminPedidosComponent },
   { path: 'admin', component: DashboardComponent },
   { path: 'estoque/entrada', component: EntradaEstoqueComponent },
+  { path: 'servicos', component: ServicosComponent },
 ];
