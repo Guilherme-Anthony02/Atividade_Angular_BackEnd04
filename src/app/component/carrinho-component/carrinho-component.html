@@ -41,9 +41,7 @@
       <span>{{ carrinho.quantidadeTotal() }} unidade(s)</span>
       <h2>Total: {{ carrinho.valorTotal() | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</h2>
       <p>O pedido ainda não foi confirmado nem salvo no banco de dados.</p>
-      <button type="button" disabled title="Será habilitado quando a API de pedidos estiver integrada">
-        Confirmar pedido (próxima etapa)
-      </button>
+      <a routerLink="/pedidos" class="finalizar">Continuar para confirmar pedido</a>
     </section>
   }
 </main>
