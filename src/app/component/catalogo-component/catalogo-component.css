@@ -1,0 +1,65 @@
+.catalogo {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  font-family: Arial, sans-serif;
+  color: #26342d;
+}
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+.marca {
+  color: #26764a;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+h1 { margin: 8px 0; font-size: clamp(28px, 4vw, 40px); }
+.topo p { line-height: 1.5; }
+.voltar {
+  white-space: nowrap;
+  border-radius: 8px;
+  background: #26764a;
+  color: white;
+  padding: 11px 16px;
+  text-decoration: none;
+}
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+.cartao {
+  border: 1px solid #dce7df;
+  border-radius: 14px;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 4px 14px #203b2b0d;
+}
+.etiqueta {
+  display: inline-block;
+  background: #e8f4ec;
+  color: #26764a;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+.cartao h2 { margin: 14px 0 8px; font-size: 20px; }
+.cartao p { min-height: 48px; color: #617067; line-height: 1.5; }
+.rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+}
+.rodape strong { color: #26764a; font-size: 20px; }
+.rodape span { color: #65756a; font-size: 13px; }
+.aviso { padding: 16px; border-radius: 10px; background: #fff5e5; }
+@media (max-width: 600px) {
+  .topo { align-items: flex-start; flex-direction: column; }
+}
