@@ -7,6 +7,8 @@ import { CarrinhoComponent } from './component/carrinho-component/carrinho-compo
 import { EstoqueComponent } from './component/estoque-component/estoque-component';
 import { PedidosComponent } from './component/pedidos-component/pedidos-component';
 import { AdminPedidosComponent } from './component/admin-pedidos-component/admin-pedidos-component';
+import { DashboardComponent } from './component/dashboard-component/dashboard-component';
+import { EntradaEstoqueComponent } from './component/entrada-estoque-component/entrada-estoque-component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,4 +21,6 @@ export const routes: Routes = [
   { path: 'estoque', component: EstoqueComponent },
   { path: 'pedidos', component: PedidosComponent },
   { path: 'admin/pedidos', component: AdminPedidosComponent },
+  { path: 'admin', component: DashboardComponent },
+  { path: 'estoque/entrada', component: EntradaEstoqueComponent },
 ];
