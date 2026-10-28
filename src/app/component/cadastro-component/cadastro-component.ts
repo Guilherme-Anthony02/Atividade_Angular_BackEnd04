@@ -20,6 +20,9 @@ export class Cadastro implements OnInit {
   email = '';
   telefone = 0;
   ativoPessoa = 'S';
+  cep = '';
+  numero = '';
+  complemento = '';
   editar = false;
   erro = '';
   mensagem = '';
@@ -49,6 +52,10 @@ export class Cadastro implements OnInit {
         this.email = pessoa.email ?? '';
         this.telefone = pessoa.telefone ?? 0;
         this.ativoPessoa = pessoa.ativoPessoa ?? 'S';
+        const endereco = pessoa.enderecos?.[0];
+        this.cep = endereco?.cep ?? '';
+        this.numero = endereco?.numero ?? '';
+        this.complemento = endereco?.complemento ?? '';
       },
       error: () => {
         this.erro = 'Não foi possível carregar os dados do cliente.';
@@ -74,6 +81,13 @@ export class Cadastro implements OnInit {
     pessoa.email = this.email.trim();
     pessoa.telefone = Number(this.telefone);
     pessoa.ativoPessoa = this.ativoPessoa || 'S';
+    if (this.cep.trim() && this.numero.trim()) {
+      pessoa.enderecos = [{
+        cep: this.cep.trim(),
+        numero: this.numero.trim(),
+        complemento: this.complemento.trim(),
+      }];
+    }
 
     const requisicao = this.editar
       ? this.cadastroService.alterarPessoa(pessoa)
@@ -86,8 +100,10 @@ export class Cadastro implements OnInit {
           : 'Cliente cadastrado com sucesso!';
         if (!this.editar) this.limparAtributos();
       },
-      error: () => {
-        this.erro = 'Não foi possível salvar o cliente. Verifique os dados e se a API está em execução.';
+      error: (erro) => {
+        this.erro = erro?.status === 409
+          ? 'Já existe um cliente com esse CPF ou e-mail.'
+          : 'Não foi possível salvar o cliente. Verifique os dados e se a API está em execução.';
       },
     });
   }
@@ -101,6 +117,9 @@ export class Cadastro implements OnInit {
     this.email = '';
     this.telefone = 0;
     this.ativoPessoa = 'S';
+    this.cep = '';
+    this.numero = '';
+    this.complemento = '';
     this.editar = false;
   }
 
