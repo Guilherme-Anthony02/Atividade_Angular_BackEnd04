@@ -89,23 +89,33 @@ export class Cadastro implements OnInit {
       }];
     }
 
-    const requisicao = this.editar
-      ? this.cadastroService.alterarPessoa(pessoa)
-      : this.cadastroService.adicionarPessoa(pessoa);
+    const aoSalvar = () => {
+  this.mensagem = this.editar
+    ? 'Cliente alterado com sucesso!'
+    : 'Cliente cadastrado com sucesso!';
 
-    requisicao.subscribe({
-      next: () => {
-        this.mensagem = this.editar
-          ? 'Cliente alterado com sucesso!'
-          : 'Cliente cadastrado com sucesso!';
-        if (!this.editar) this.limparAtributos();
-      },
-      error: (erro) => {
-        this.erro = erro?.status === 409
-          ? 'Já existe um cliente com esse CPF ou e-mail.'
-          : 'Não foi possível salvar o cliente. Verifique os dados e se a API está em execução.';
-      },
-    });
+  if (!this.editar) {
+    this.limparAtributos();
+  }
+};
+
+const aoFalhar = (erro: any) => {
+  this.erro = erro?.status === 409
+    ? 'Já existe um cliente com esse CPF ou e-mail.'
+    : 'Não foi possível salvar o cliente. Verifique os dados e se a API está em execução.';
+};
+
+if (this.editar) {
+  this.cadastroService.alterarPessoa(pessoa).subscribe({
+    next: aoSalvar,
+    error: aoFalhar,
+  });
+} else {
+  this.cadastroService.adicionarPessoa(pessoa).subscribe({
+    next: aoSalvar,
+    error: aoFalhar,
+  });
+}
   }
 
   limparAtributos(): void {
