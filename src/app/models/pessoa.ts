@@ -1,3 +1,10 @@
+export interface EnderecoPessoa {
+  idEndereco?: number;
+  cep: string;
+  numero: string;
+  complemento: string;
+}
+
 export class Pessoa {
   idPessoa = 0;
   nome = '';
@@ -7,4 +14,5 @@ export class Pessoa {
   email = '';
   telefone = 0;
   ativoPessoa = 'S';
+  enderecos: EnderecoPessoa[] = [];
 }
