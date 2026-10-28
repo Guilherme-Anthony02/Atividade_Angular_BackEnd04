@@ -1,0 +1,34 @@
+
+body {
+    font-family: Arial, sem-serif;
+    background-color: #eeeeee;
+}
+
+
+#div-form {
+    background-color: white;
+    width: 350px; 
+    margin: 50px auto; 
+    padding: 20px; 
+    border: 1px solid #cccccc; 
+}
+
+/* Título */
+h2 {
+    text-align: center; 
+}
+
+
+label {
+    display: block; 
+    margin-top: 15px;
+    font-weight: bold; 
+}
+
+/* Campos de digitar (Inputs) */
+.input01 {
+    width: 100%; 
+    padding: 8px; 
+    margin-top: 5px;
+    box-sizing: border-box; 
+}

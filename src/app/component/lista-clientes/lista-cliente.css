@@ -1,0 +1,101 @@
+#div-lista {
+    padding: 24px;
+    font-family: Arial, sans-serif;
+}
+
+#div-lista h2 {
+    margin: 0 0 20px;
+    font-size: 32px;
+    color: #1f7a1f;
+    text-align: center;
+}
+
+.acao-topo {
+    max-width: 1100px;
+    margin: 0 auto 18px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.btn-voltar {
+    border: none;
+    border-radius: 10px;
+    background: #1f7a1f;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-voltar:hover {
+    background: #185d18;
+}
+
+#lista-produto {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+#lista-produto .item-produto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    background: #ffffff;
+    border: 1px solid #d9e2d9;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.dados-produto {
+    flex: 1;
+    color: #222;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.links-lista {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.lnk-editar,
+.lnk-excluir {
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.lnk-editar {
+    background: #eaf4ff;
+    color: #1b5fbf;
+}
+
+.lnk-excluir {
+    background: #fdeaea;
+    color: #b42318;
+}
+
+.lnk-editar:hover {
+    background: #d9ebff;
+}
+
+.lnk-excluir:hover {
+    background: #f9d4d4;
+}
+
+.div-item-produto {
+    background: #f4f4f4;
+    border: 1px dashed #b7b7b7;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+}
