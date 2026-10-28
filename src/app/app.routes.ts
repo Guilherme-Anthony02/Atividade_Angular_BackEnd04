@@ -4,6 +4,7 @@ import { Cadastro } from './component/cadastro-component/cadastro-component';
 import { ListaPessoa } from './component/lista-clientes/lista-cliente';
 import { CatalogoComponent } from './component/catalogo-component/catalogo-component';
 import { CarrinhoComponent } from './component/carrinho-component/carrinho-component';
+import { EstoqueComponent } from './component/estoque-component/estoque-component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -13,4 +14,5 @@ export const routes: Routes = [
   { path: 'listapessoa', component: ListaPessoa },
   { path: 'catalogo', component: CatalogoComponent },
   { path: 'carrinho', component: CarrinhoComponent },
+  { path: 'estoque', component: EstoqueComponent },
 ];
