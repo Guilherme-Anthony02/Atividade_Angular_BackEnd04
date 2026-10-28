@@ -90,32 +90,31 @@ export class Cadastro implements OnInit {
     }
 
     const aoSalvar = () => {
-  this.mensagem = this.editar
-    ? 'Cliente alterado com sucesso!'
-    : 'Cliente cadastrado com sucesso!';
+      this.mensagem = this.editar
+        ? 'Cliente alterado com sucesso!'
+        : 'Cliente cadastrado com sucesso!';
+      if (!this.editar) this.limparAtributos();
+    };
 
-  if (!this.editar) {
-    this.limparAtributos();
-  }
-};
+    const aoFalhar = (erro: any) => {
+      this.erro = erro?.status === 409
+        ? 'Já existe um cliente com esse CPF ou e-mail.'
+        : 'Não foi possível salvar o cliente. Verifique os dados e se a API está em execução.';
+    };
 
-const aoFalhar = (erro: any) => {
-  this.erro = erro?.status === 409
-    ? 'Já existe um cliente com esse CPF ou e-mail.'
-    : 'Não foi possível salvar o cliente. Verifique os dados e se a API está em execução.';
-};
-
-if (this.editar) {
-  this.cadastroService.alterarPessoa(pessoa).subscribe({
-    next: aoSalvar,
-    error: aoFalhar,
-  });
-} else {
-  this.cadastroService.adicionarPessoa(pessoa).subscribe({
-    next: aoSalvar,
-    error: aoFalhar,
-  });
-}
+    // Mantemos as chamadas separadas porque cada método retorna um Observable
+    // com tipo diferente (Pessoa no POST e void no PUT).
+    if (this.editar) {
+      this.cadastroService.alterarPessoa(pessoa).subscribe({
+        next: aoSalvar,
+        error: aoFalhar,
+      });
+    } else {
+      this.cadastroService.adicionarPessoa(pessoa).subscribe({
+        next: aoSalvar,
+        error: aoFalhar,
+      });
+    }
   }
 
   limparAtributos(): void {
