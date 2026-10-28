@@ -2,6 +2,7 @@ import { CurrencyPipe } from '@angular/common';
 import { Component, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CatalogoService } from '../../service/catalogo-service';
+import { CarrinhoService } from '../../service/carrinho-service';
 import { ProdutoCatalogo } from '../../models/produto-catalogo';
 
 @Component({
@@ -15,8 +16,12 @@ export class CatalogoComponent implements OnInit {
   produtos = signal<ProdutoCatalogo[]>([]);
   carregando = true;
   erro = '';
+  mensagem = '';
 
-  constructor(private catalogoService: CatalogoService) {}
+  constructor(
+    private catalogoService: CatalogoService,
+    private carrinho: CarrinhoService,
+  ) {}
 
   ngOnInit(): void {
     this.catalogoService.listarProdutos().subscribe({
@@ -43,5 +48,10 @@ export class CatalogoComponent implements OnInit {
 
   preco(produto: ProdutoCatalogo): number {
     return Number(produto.precoVenda || produto.iditemNavigation?.preco || 0);
+  }
+
+  adicionarAoCarrinho(produto: ProdutoCatalogo): void {
+    this.carrinho.adicionar(produto);
+    this.mensagem = 'Produto adicionado ao carrinho.';
   }
 }

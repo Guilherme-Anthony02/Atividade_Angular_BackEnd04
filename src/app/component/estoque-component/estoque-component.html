@@ -1,0 +1,46 @@
+<main class="estoque">
+  <header class="topo">
+    <div>
+      <p class="marca">ESTÉTICA &amp; BEM-ESTAR</p>
+      <h1>Consulta de estoque</h1>
+      <p>Consulte a quantidade disponível dos produtos.</p>
+    </div>
+    <a routerLink="/home">Voltar para Home</a>
+  </header>
+
+  <form class="busca" (ngSubmit)="buscar()">
+    <label for="idBusca">Buscar por ID do produto</label>
+    <input id="idBusca" name="idBusca" type="number" min="1" [(ngModel)]="idBusca" placeholder="Deixe vazio para listar todos">
+    <button type="submit">Consultar</button>
+    <button type="button" class="secundario" (click)="idBusca=''; listar()">Listar todos</button>
+  </form>
+
+  @if (carregando) {
+    <p role="status">Carregando estoque...</p>
+  } @else if (erro) {
+    <p class="erro" role="alert">{{ erro }}</p>
+  } @else if (itens.length === 0) {
+    <p>Nenhum produto encontrado no estoque.</p>
+  } @else {
+    <div class="tabela">
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Produto</th><th>Categoria</th><th>Preço de venda</th><th>Unidade</th><th>Quantidade</th><th>Situação</th></tr>
+        </thead>
+        <tbody>
+          @for (item of itens; track item.idItem) {
+            <tr>
+              <td>{{ item.idItem }}</td>
+              <td><strong>{{ item.item }}</strong><small>{{ item.descricaoItem }}</small></td>
+              <td>{{ item.categoria }}</td>
+              <td>{{ item.precoVenda || item.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</td>
+              <td>{{ item.unidade }}</td>
+              <td><strong>{{ item.quantidadeEstoque }}</strong></td>
+              <td>{{ item.ativo === 'N' ? 'Inativo' : 'Ativo' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</main>

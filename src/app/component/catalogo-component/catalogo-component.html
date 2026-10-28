@@ -5,7 +5,10 @@
       <h1>Catálogo de produtos</h1>
       <p>Confira os produtos disponíveis em nossa loja.</p>
     </div>
-    <a routerLink="/home" class="voltar">Voltar para Home</a>
+    <nav class="acoes">
+      <a routerLink="/home" class="voltar">Voltar para Home</a>
+      <a routerLink="/carrinho" class="voltar">Meu carrinho</a>
+    </nav>
   </header>
 
   @if (carregando) {
@@ -25,8 +28,10 @@
             <strong>{{ preco(produto) | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</strong>
             <span>{{ produto.unidade }}</span>
           </div>
+          <button type="button" (click)="adicionarAoCarrinho(produto)">Adicionar ao carrinho</button>
         </article>
       }
     </section>
   }
+  @if (mensagem) { <p role="status">{{ mensagem }}</p> }
 </main>
