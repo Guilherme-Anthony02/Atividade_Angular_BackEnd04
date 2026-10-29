@@ -7,7 +7,7 @@ import { Pessoa } from '../models/pessoa';
   providedIn: 'root',
 })
 export class CadastroService {
-  private readonly urlApi = 'http://localhost:5295/api/PessoaEndereco';
+  private readonly urlApi = 'https://localhost:7077/api/PessoaEndereco';
 
   constructor(private http: HttpClient) {}
 
