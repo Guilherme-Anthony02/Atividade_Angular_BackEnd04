@@ -18,7 +18,7 @@ export class AdminPedidosComponent implements OnInit {
   mensagem = '';
   carregando = false;
 
-  constructor(private service: PedidosService) {}
+  constructor(private service: PedidosService) { }
   ngOnInit(): void { this.listar(); }
 
   listar(): void {

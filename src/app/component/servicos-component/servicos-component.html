@@ -1,5 +1,89 @@
-<main class="servicos"><header><div><p>ESTÉTICA &amp; BEM-ESTAR</p><h1>Serviços disponíveis</h1></div><a routerLink="/catalogo">Ver produtos</a></header>
-<section class="filtros"><label>Pesquisar por nome<input type="search" [(ngModel)]="pesquisa" placeholder="Nome do serviço"></label><form (ngSubmit)="consultarId()"><label>Consultar por ID<input name="idBusca" type="number" min="1" [(ngModel)]="idBusca"></label><button type="submit">Consultar</button></form><button type="button" class="secundario" (click)="idBusca='';pesquisa='';listar()">Listar todos</button></section>
-@if(carregando){<p>Carregando serviços...</p>} @if(erro){<p class="erro" role="alert">{{erro}}</p>}
-<section class="grade">@for(s of filtrados();track s.id){<article><h2>{{s.nome}}</h2><p>{{s.descricao}}</p><strong>{{s.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}</strong><span>Categoria ID: {{s.idCategoria}}</span></article>}</section>
-@if(!carregando&&!erro&&filtrados().length===0){<p>Nenhum serviço encontrado.</p>}</main>
+<main class="servicos">
+
+    <header>
+        <div>
+            <p>ESTÉTICA &amp; BEM-ESTAR</p>
+            <h1>Serviços disponíveis</h1>
+        </div>
+
+        <a routerLink="/catalogo">Ver produtos</a>
+    </header>
+
+    <section class="filtros">
+
+        <label>
+            Pesquisar por nome
+
+            <input
+                type="search"
+                [(ngModel)]="pesquisa"
+                placeholder="Nome do serviço"
+            >
+        </label>
+
+        <form (ngSubmit)="consultarId()">
+
+            <label>
+                Consultar por ID
+
+                <input
+                    name="idBusca"
+                    type="number"
+                    min="1"
+                    [(ngModel)]="idBusca"
+                >
+            </label>
+
+            <button type="submit">
+                Consultar
+            </button>
+
+        </form>
+
+        <button
+            type="button"
+            class="secundario"
+            (click)="idBusca=''; pesquisa=''; listar()"
+        >
+            Listar todos
+        </button>
+
+    </section>
+
+    @if (carregando) {
+        <p>Carregando serviços...</p>
+    }
+
+    @if (erro) {
+        <p class="erro" role="alert">
+            {{ erro }}
+        </p>
+    }
+
+    <section class="grade">
+
+        @for (s of filtrados(); track s.id) {
+            <article>
+
+                <h2>{{ s.nome }}</h2>
+
+                <p>{{ s.descricao }}</p>
+
+                <strong>
+                    {{ s.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+                </strong>
+
+                <span>
+                    Categoria ID: {{ s.idCategoria }}
+                </span>
+
+            </article>
+        }
+
+    </section>
+
+    @if (!carregando && !erro && filtrados().length === 0) {
+        <p>Nenhum serviço encontrado.</p>
+    }
+
+</main>

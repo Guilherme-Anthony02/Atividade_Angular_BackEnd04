@@ -1,12 +1,124 @@
 <main class="admin">
-  <header><div><p>ESTÉTICA &amp; BEM-ESTAR</p><h1>Gerenciamento de pedidos</h1></div><a routerLink="/home">Voltar</a></header>
-  <form (ngSubmit)="listar()"><label for="situacao">Filtrar por situação</label><select id="situacao" name="situacao" [(ngModel)]="situacao"><option value="">Todos</option><option value="A">Aberto</option><option value="P">Em processamento</option><option value="F">Finalizado</option><option value="C">Cancelado</option></select><button type="submit">Filtrar</button></form>
-  @if (mensagem) { <p class="sucesso" role="status">{{ mensagem }}</p> }
-  @if (erro) { <p class="erro" role="alert">{{ erro }}</p> }
-  @if (carregando) { <p>Carregando...</p> } @else if (pedidos.length === 0) { <p>Nenhum pedido encontrado.</p> } @else {
-    @for (pedido of pedidos; track pedido.idPedido) {
-      <article class="pedido"><div><h2>Pedido #{{ pedido.idPedido }}</h2><p>Cliente: {{ pedido.cliente }} (ID {{ pedido.idCliente }})</p><p>{{ pedido.data | date:'dd/MM/yyyy' }} · {{ pedido.total | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p><p>Itens: {{ pedido.itens.length }}</p></div>
-      <div class="acoes"><strong>Situação: {{ pedido.situacao }}</strong><button type="button" (click)="atualizar(pedido.idPedido, 'P')" [disabled]="pedido.situacao !== 'A'">Processando</button><button type="button" (click)="atualizar(pedido.idPedido, 'F')" [disabled]="pedido.situacao !== 'P'">Finalizar</button><button type="button" class="cancelar" (click)="atualizar(pedido.idPedido, 'C')" [disabled]="pedido.situacao === 'C' || pedido.situacao === 'F'">Cancelar</button></div></article>
+
+    <header>
+        <div>
+            <p>ESTÉTICA &amp; BEM-ESTAR</p>
+            <h1>Gerenciamento de pedidos</h1>
+        </div>
+
+        <a routerLink="/home">
+            Voltar
+        </a>
+    </header>
+
+    <form (ngSubmit)="listar()">
+
+        <label for="situacao">
+            Filtrar por situação
+        </label>
+
+        <select
+            id="situacao"
+            name="situacao"
+            [(ngModel)]="situacao"
+        >
+            <option value="">Todos</option>
+            <option value="A">Aberto</option>
+            <option value="P">Em processamento</option>
+            <option value="F">Finalizado</option>
+            <option value="C">Cancelado</option>
+        </select>
+
+        <button type="submit">
+            Filtrar
+        </button>
+
+    </form>
+
+    @if (mensagem) {
+        <p class="sucesso" role="status">
+            {{ mensagem }}
+        </p>
     }
-  }
+
+    @if (erro) {
+        <p class="erro" role="alert">
+            {{ erro }}
+        </p>
+    }
+
+    @if (carregando) {
+
+        <p>Carregando...</p>
+
+    } @else if (pedidos.length === 0) {
+
+        <p>Nenhum pedido encontrado.</p>
+
+    } @else {
+
+        @for (pedido of pedidos; track pedido.idPedido) {
+
+            <article class="pedido">
+
+                <div>
+                    <h2>
+                        Pedido #{{ pedido.idPedido }}
+                    </h2>
+
+                    <p>
+                        Cliente: {{ pedido.cliente }}
+                        (ID {{ pedido.idCliente }})
+                    </p>
+
+                    <p>
+                        {{ pedido.data | date:'dd/MM/yyyy' }}
+                        -
+                        {{ pedido.total | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+                    </p>
+
+                    <p>
+                        Itens: {{ pedido.itens.length }}
+                    </p>
+                </div>
+
+                <div class="acoes">
+
+                    <strong>
+                        Situação: {{ pedido.situacao }}
+                    </strong>
+
+                    <button
+                        type="button"
+                        (click)="atualizar(pedido.idPedido, 'P')"
+                        [disabled]="pedido.situacao !== 'A'"
+                    >
+                        Processando
+                    </button>
+
+                    <button
+                        type="button"
+                        (click)="atualizar(pedido.idPedido, 'F')"
+                        [disabled]="pedido.situacao !== 'P'"
+                    >
+                        Finalizar
+                    </button>
+
+                    <button
+                        type="button"
+                        class="cancelar"
+                        (click)="atualizar(pedido.idPedido, 'C')"
+                        [disabled]="pedido.situacao === 'C' || pedido.situacao === 'F'"
+                    >
+                        Cancelar
+                    </button>
+
+                </div>
+
+            </article>
+
+        }
+
+    }
+
 </main>

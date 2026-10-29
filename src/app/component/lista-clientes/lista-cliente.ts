@@ -32,7 +32,7 @@ export class ListaPessoa implements OnInit {
         );
       },
       error: () => {
-        this.erro = 'Não foi possível carregar os clientes. Confira se a API está em execução.';
+        this.erro = 'Não foi possível carregar os clientes.';
       },
     });
   }

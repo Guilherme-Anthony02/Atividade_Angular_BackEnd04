@@ -14,7 +14,7 @@ export class CarrinhoComponent {
   mensagem = '';
   erro = '';
 
-  constructor(public carrinho: CarrinhoService) {}
+  constructor(public carrinho: CarrinhoService) { }
 
   alterarQuantidade(idItem: number, valor: string): void {
     const quantidade = Number(valor);

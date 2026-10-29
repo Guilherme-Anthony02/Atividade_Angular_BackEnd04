@@ -13,7 +13,6 @@ body {
     border: 1px solid #cccccc; 
 }
 
-/* Título */
 h2 {
     text-align: center; 
 }
@@ -25,7 +24,6 @@ label {
     font-weight: bold; 
 }
 
-/* Campos de digitar (Inputs) */
 .input01 {
     width: 100%; 
     padding: 8px; 

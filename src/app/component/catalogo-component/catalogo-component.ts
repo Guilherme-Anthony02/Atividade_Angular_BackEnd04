@@ -25,7 +25,7 @@ export class CatalogoComponent implements OnInit {
   constructor(
     private catalogoService: CatalogoService,
     private carrinho: CarrinhoService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.catalogoService.listarProdutos().subscribe({
@@ -36,7 +36,7 @@ export class CatalogoComponent implements OnInit {
         this.carregando = false;
       },
       error: () => {
-        this.erro = 'Não foi possível carregar o catálogo. Confira se a API e o banco estão em execução.';
+        this.erro = 'Não foi possível carregar o catálogo.';
         this.carregando = false;
       },
     });

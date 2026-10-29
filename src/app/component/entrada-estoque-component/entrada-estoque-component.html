@@ -1,8 +1,95 @@
-<main class="entrada"><header><div><p>ESTÉTICA &amp; BEM-ESTAR</p><h1>Registrar entrada de produtos</h1></div><a routerLink="/estoque">Voltar ao estoque</a></header>
-@if(mensagem){<p class="sucesso" role="status">{{mensagem}}</p>} @if(erro){<p class="erro" role="alert">{{erro}}</p>}
-<form (ngSubmit)="registrar()"><label>ID do produto<input name="idItem" type="number" min="1" required [(ngModel)]="idItem"></label>
-<label>Quantidade recebida<input name="quantidade" type="number" min="1" required [(ngModel)]="quantidade"></label>
-<label>Data da entrada<input name="dataEntrada" type="date" required [(ngModel)]="dataEntrada"></label>
-<label>Valor unitário de entrada (R$)<input name="valorUnitario" type="number" min="0.01" step="0.01" required [(ngModel)]="valorUnitario"></label>
-<label>Unidade<input name="unidade" required [(ngModel)]="unidade"></label>
-<button type="submit" [disabled]="carregando">{{carregando?'Salvando...':'Registrar entrada e atualizar estoque'}}</button></form></main>
+<main class="entrada">
+
+    <header>
+        <div>
+            <p>ESTÉTICA &amp; BEM-ESTAR</p>
+            <h1>Registrar entrada de produtos</h1>
+        </div>
+
+        <a routerLink="/estoque">
+            Voltar ao estoque
+        </a>
+    </header>
+
+    @if (mensagem) {
+        <p class="sucesso" role="status">
+            {{ mensagem }}
+        </p>
+    }
+
+    @if (erro) {
+        <p class="erro" role="alert">
+            {{ erro }}
+        </p>
+    }
+
+    <form (ngSubmit)="registrar()">
+
+        <label>
+            ID do produto
+
+            <input
+                name="idItem"
+                type="number"
+                min="1"
+                required
+                [(ngModel)]="idItem"
+            >
+        </label>
+
+        <label>
+            Quantidade recebida
+
+            <input
+                name="quantidade"
+                type="number"
+                min="1"
+                required
+                [(ngModel)]="quantidade"
+            >
+        </label>
+
+        <label>
+            Data da entrada
+
+            <input
+                name="dataEntrada"
+                type="date"
+                required
+                [(ngModel)]="dataEntrada"
+            >
+        </label>
+
+        <label>
+            Valor unitário de entrada (R$)
+
+            <input
+                name="valorUnitario"
+                type="number"
+                min="0.01"
+                step="0.01"
+                required
+                [(ngModel)]="valorUnitario"
+            >
+        </label>
+
+        <label>
+            Unidade
+
+            <input
+                name="unidade"
+                required
+                [(ngModel)]="unidade"
+            >
+        </label>
+
+        <button
+            type="submit"
+            [disabled]="carregando"
+        >
+            {{ carregando ? 'Salvando...' : 'Registrar entrada e atualizar estoque' }}
+        </button>
+
+    </form>
+
+</main>

@@ -10,37 +10,61 @@
 
   <form class="busca" (ngSubmit)="buscar()">
     <label for="idBusca">Buscar por ID do produto</label>
-    <input id="idBusca" name="idBusca" type="number" min="1" [(ngModel)]="idBusca" placeholder="Deixe vazio para listar todos">
+    <input id="idBusca" name="idBusca" type="number" min="1" [(ngModel)]="idBusca"
+      placeholder="Deixe vazio para listar todos">
     <button type="submit">Consultar</button>
-    <button type="button" class="secundario" (click)="idBusca=''; listar()">Listar todos</button>
+    <button type="button" class="secundario" (click)="idBusca=''; listar()">
+      Listar todos
+    </button>
   </form>
 
   @if (carregando) {
-    <p role="status">Carregando estoque...</p>
+  <p role="status">Carregando estoque...</p>
   } @else if (erro) {
-    <p class="erro" role="alert">{{ erro }}</p>
+  <p class="erro" role="alert">{{ erro }}</p>
   } @else if (itens.length === 0) {
-    <p>Nenhum produto encontrado no estoque.</p>
+  <p>Nenhum produto encontrado no estoque.</p>
   } @else {
-    <div class="tabela">
-      <table>
-        <thead>
-          <tr><th>ID</th><th>Produto</th><th>Categoria</th><th>Preço de venda</th><th>Unidade</th><th>Quantidade</th><th>Situação</th></tr>
-        </thead>
-        <tbody>
-          @for (item of itens; track item.idItem) {
-            <tr>
-              <td>{{ item.idItem }}</td>
-              <td><strong>{{ item.item }}</strong><small>{{ item.descricaoItem }}</small></td>
-              <td>{{ item.categoria }}</td>
-              <td>{{ item.precoVenda || item.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</td>
-              <td>{{ item.unidade }}</td>
-              <td><strong>{{ item.quantidadeEstoque }}</strong></td>
-              <td>{{ item.ativo === 'N' ? 'Inativo' : 'Ativo' }}</td>
-            </tr>
-          }
-        </tbody>
-      </table>
+  <section class="lista-estoque">
+    @for (item of itens; track item.idItem) {
+    <div class="produto-estoque">
+      <div class="produto-cabecalho">
+        <div>
+          <span class="identificador">ID: {{ item.idItem }}</span>
+          <h2>{{ item.item }}</h2>
+          <p>{{ item.descricaoItem }}</p>
+        </div>
+
+        <span class="situacao">
+          {{ item.ativo === 'N' ? 'Inativo' : 'Ativo' }}
+        </span>
+      </div>
+
+      <div class="informacoes">
+        <div class="informacao">
+          <span>Categoria</span>
+          <strong>{{ item.categoria }}</strong>
+        </div>
+
+        <div class="informacao">
+          <span>Preço de venda</span>
+          <strong>
+            {{ (item.precoVenda || item.preco) | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+          </strong>
+        </div>
+
+        <div class="informacao">
+          <span>Unidade</span>
+          <strong>{{ item.unidade }}</strong>
+        </div>
+
+        <div class="informacao">
+          <span>Quantidade disponível</span>
+          <strong class="quantidade">{{ item.quantidadeEstoque }}</strong>
+        </div>
+      </div>
     </div>
+    }
+  </section>
   }
 </main>

@@ -1,21 +1,149 @@
-.carrinho { max-width: 1050px; margin: 0 auto; padding: 32px 20px; color: #24332c; }
-.topo { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:28px; }
-.marca { color:#38745a; font-size:.8rem; font-weight:700; letter-spacing:.12em; }
-h1 { margin:8px 0; }
-.botao-secundario,.botao { display:inline-block; padding:11px 16px; border-radius:8px; text-decoration:none; font-weight:600; }
-.botao-secundario { color:#2e624b; border:1px solid #2e624b; }
-.botao { color:white; background:#2e624b; }
-.itens { display:grid; gap:12px; }
-.item { display:grid; grid-template-columns:minmax(180px,1fr) 130px 140px auto; align-items:center; gap:16px; padding:18px; border:1px solid #dce5df; border-radius:12px; background:white; }
-.item h2 { margin:0 0 6px; font-size:1.05rem; }
-.item p { margin:0 0 8px; color:#65746b; }
-.item span { font-size:.9rem; }
-input { display:block; width:100%; box-sizing:border-box; margin-top:6px; padding:9px; border:1px solid #bdcbc2; border-radius:6px; }
-.remover { border:0; background:#f8e8e6; color:#923e35; padding:10px 12px; border-radius:7px; cursor:pointer; }
-.resumo { margin-top:22px; margin-left:auto; max-width:350px; padding:20px; border-radius:12px; background:#f0f6f1; }
-.resumo button { width:100%; padding:12px; border:0; border-radius:8px; background:#9da9a1; color:white; }
-.vazio { padding:40px 20px; text-align:center; border:1px dashed #bdcbc2; border-radius:12px; }
-.sucesso { color:#246b43; } .erro { color:#a32e2e; }
-@media (max-width:700px) { .topo { align-items:flex-start; flex-direction:column; } .item { grid-template-columns:1fr 1fr; } }
+.carrinho {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 32px 20px;
+    color: #24332c;
+}
 
-.finalizar { display:block; margin-top:12px; padding:12px; text-align:center; text-decoration:none; border-radius:8px; background:#2e624b; color:white; font-weight:600; }
+.topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.marca {
+    color: #38745a;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+}
+
+h1 {
+    margin: 8px 0;
+}
+
+.botao-secundario,
+.botao {
+    display: inline-block;
+    padding: 11px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.botao-secundario {
+    color: #2e624b;
+    border: 1px solid #2e624b;
+}
+
+.botao {
+    color: white;
+    background: #2e624b;
+}
+
+.itens {
+    display: grid;
+    gap: 12px;
+}
+
+.item {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) 130px 140px auto;
+    align-items: center;
+    gap: 16px;
+    padding: 18px;
+    border: 1px solid #dce5df;
+    border-radius: 12px;
+    background: white;
+}
+
+.item h2 {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+}
+
+.item p {
+    margin: 0 0 8px;
+    color: #65746b;
+}
+
+.item span {
+    font-size: .9rem;
+}
+
+input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 6px;
+    padding: 9px;
+    border: 1px solid #bdcbc2;
+    border-radius: 6px;
+}
+
+.remover {
+    border: 0;
+    background: #f8e8e6;
+    color: #923e35;
+    padding: 10px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.resumo {
+    margin-top: 22px;
+    margin-left: auto;
+    max-width: 350px;
+    padding: 20px;
+    border-radius: 12px;
+    background: #f0f6f1;
+}
+
+.resumo button {
+    width: 100%;
+    padding: 12px;
+    border: 0;
+    border-radius: 8px;
+    background: #9da9a1;
+    color: white;
+}
+
+.vazio {
+    padding: 40px 20px;
+    text-align: center;
+    border: 1px dashed #bdcbc2;
+    border-radius: 12px;
+}
+
+.sucesso {
+    color: #246b43;
+}
+
+.erro {
+    color: #a32e2e;
+}
+
+@media (max-width:700px) {
+    .topo {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .item {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.finalizar {
+    display: block;
+    margin-top: 12px;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    background: #2e624b;
+    color: white;
+    font-weight: 600;
+}

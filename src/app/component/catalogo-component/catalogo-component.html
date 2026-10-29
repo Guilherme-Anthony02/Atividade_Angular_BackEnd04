@@ -1,42 +1,131 @@
 <main class="catalogo">
-  <header class="topo">
-    <div>
-      <p class="marca">ESTÉTICA &amp; BEM-ESTAR</p>
-      <h1>Catálogo de produtos</h1>
-      <p>Confira os produtos disponíveis em nossa loja.</p>
-    </div>
-    <nav class="acoes">
-      <a routerLink="/home" class="voltar">Voltar para Home</a>
-      <a routerLink="/carrinho" class="voltar">Meu carrinho</a>
-    </nav>
-  </header>
 
-  <section class="filtros">
-    <label>Pesquisar por nome<input type="search" [(ngModel)]="pesquisa" placeholder="Digite o nome do produto"></label>
-    <label>Categoria (ID)<select [(ngModel)]="categoria"><option value="">Todas</option>@for (cat of categorias(); track cat) { <option [value]="cat">{{ cat }}</option> }</select></label>
-    <label>Tipo<select [(ngModel)]="tipo"><option value="">Todos</option><option value="produto">Produto</option><option value="servico">Serviço</option><option value="serviço">Serviço</option></select></label>
-  </section>
-  @if (carregando) {
-    <p role="status">Carregando produtos...</p>
-  } @else if (erro) {
-    <p class="aviso" role="alert">{{ erro }}</p>
-  } @else if (produtosFiltrados().length === 0) {
-    <p class="aviso">Nenhum produto disponível no momento.</p>
-  } @else {
-    <section class="grade">
-      @for (produto of produtosFiltrados(); track produto.iditem) {
-        <article class="cartao">
-          <span class="etiqueta">Produto</span>
-          <h2>{{ nomeProduto(produto) }}</h2>
-          <p>{{ descricao(produto) }}</p>
-          <div class="rodape">
-            <strong>{{ preco(produto) | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</strong>
-            <span>{{ produto.unidade }}</span>
-          </div>
-          <button type="button" (click)="adicionarAoCarrinho(produto)">Adicionar ao carrinho</button>
-        </article>
-      }
+    <header class="topo">
+        <div>
+            <p class="marca">ESTÉTICA &amp; BEM-ESTAR</p>
+            <h1>Catálogo de produtos</h1>
+            <p>Confira os produtos disponíveis em nossa loja.</p>
+        </div>
+
+        <nav class="acoes">
+            <a routerLink="/home" class="voltar">
+                Voltar para Home
+            </a>
+
+            <a routerLink="/carrinho" class="voltar">
+                Meu carrinho
+            </a>
+        </nav>
+    </header>
+
+    <section class="filtros">
+
+        <label>
+            Pesquisar por nome
+
+            <input
+                type="search"
+                [(ngModel)]="pesquisa"
+                placeholder="Digite o nome do produto"
+            >
+        </label>
+
+        <label>
+            Categoria (ID)
+
+            <select [(ngModel)]="categoria">
+                <option value="">Todas</option>
+
+                @for (cat of categorias(); track cat) {
+                    <option [value]="cat">
+                        {{ cat }}
+                    </option>
+                }
+            </select>
+        </label>
+
+        <label>
+            Tipo
+
+            <select [(ngModel)]="tipo">
+                <option value="">Todos</option>
+                <option value="produto">Produto</option>
+                <option value="servico">Serviço</option>
+                <option value="serviço">Serviço</option>
+            </select>
+        </label>
+
     </section>
-  }
-  @if (mensagem) { <p role="status">{{ mensagem }}</p> }
+
+    @if (carregando) {
+
+        <p role="status">
+            Carregando produtos...
+        </p>
+
+    } @else if (erro) {
+
+        <p class="aviso" role="alert">
+            {{ erro }}
+        </p>
+
+    } @else if (produtosFiltrados().length === 0) {
+
+        <p class="aviso">
+            Nenhum produto disponível no momento.
+        </p>
+
+    } @else {
+
+        <section class="grade">
+
+            @for (produto of produtosFiltrados(); track produto.iditem) {
+
+                <article class="cartao">
+
+                    <span class="etiqueta">
+                        Produto
+                    </span>
+
+                    <h2>
+                        {{ nomeProduto(produto) }}
+                    </h2>
+
+                    <p>
+                        {{ descricao(produto) }}
+                    </p>
+
+                    <div class="rodape">
+
+                        <strong>
+                            {{ preco(produto) | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+                        </strong>
+
+                        <span>
+                            {{ produto.unidade }}
+                        </span>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        (click)="adicionarAoCarrinho(produto)"
+                    >
+                        Adicionar ao carrinho
+                    </button>
+
+                </article>
+
+            }
+
+        </section>
+
+    }
+
+    @if (mensagem) {
+        <p role="status">
+            {{ mensagem }}
+        </p>
+    }
+
 </main>

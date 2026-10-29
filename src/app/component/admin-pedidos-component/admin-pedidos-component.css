@@ -1,1 +1,98 @@
-.admin{max-width:1000px;margin:auto;padding:30px 20px;color:#24332c}header{display:flex;justify-content:space-between;align-items:center}header p{color:#38745a;font-weight:700;letter-spacing:.1em}form{display:flex;gap:12px;align-items:center;margin:20px 0;padding:16px;background:#f0f6f1;border-radius:10px}select{padding:10px;border:1px solid #bdcbc2;border-radius:7px}button{padding:9px 12px;border:0;border-radius:7px;background:#2e624b;color:white;cursor:pointer}button:disabled{opacity:.4;cursor:not-allowed}.pedido{display:flex;justify-content:space-between;gap:18px;align-items:center;padding:18px;margin:12px 0;border:1px solid #dce5df;border-radius:10px}.pedido h2{margin:0}.pedido p{margin:7px 0}.acoes{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.cancelar{background:#963f38}.sucesso{color:#246b43}.erro{color:#a32e2e}@media(max-width:700px){.pedido{align-items:flex-start;flex-direction:column}form{align-items:flex-start;flex-direction:column}}
+.admin {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px 20px;
+    color: #24332c
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+header p {
+    color: #38745a;
+    font-weight: 700;
+    letter-spacing: .1em
+}
+
+form {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 20px 0;
+    padding: 16px;
+    background: #f0f6f1;
+    border-radius: 10px
+}
+
+select {
+    padding: 10px;
+    border: 1px solid #bdcbc2;
+    border-radius: 7px
+}
+
+button {
+    padding: 9px 12px;
+    border: 0;
+    border-radius: 7px;
+    background: #2e624b;
+    color: white;
+    cursor: pointer
+}
+
+button:disabled {
+    opacity: .4;
+    cursor: not-allowed
+}
+
+.pedido {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: center;
+    padding: 18px;
+    margin: 12px 0;
+    border: 1px solid #dce5df;
+    border-radius: 10px
+}
+
+.pedido h2 {
+    margin: 0
+}
+
+.pedido p {
+    margin: 7px 0
+}
+
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center
+}
+
+.cancelar {
+    background: #963f38
+}
+
+.sucesso {
+    color: #246b43
+}
+
+.erro {
+    color: #a32e2e
+}
+
+@media(max-width:700px) {
+    .pedido {
+        align-items: flex-start;
+        flex-direction: column
+    }
+
+    form {
+        align-items: flex-start;
+        flex-direction: column
+    }
+}
