@@ -16,39 +16,15 @@
     @if (!carregando && !erro) {
         <section class="cards">
             <div class="card">
-                <span>Clientes</span>
+                <span>Clientes cadastrados</span>
                 <strong>{{ resumo.clientes }}</strong>
                 <a routerLink="/listapessoa">Ver clientes</a>
             </div>
 
             <div class="card">
-                <span>Produtos</span>
+                <span>Produtos cadastrados</span>
                 <strong>{{ resumo.produtos }}</strong>
                 <a routerLink="/catalogo">Ver catálogo</a>
-            </div>
-
-            <div class="card">
-                <span>Serviços</span>
-                <strong>{{ resumo.servicos }}</strong>
-            </div>
-
-            <div class="card">
-                <span>Pedidos</span>
-                <strong>{{ resumo.pedidos }}</strong>
-                <a routerLink="/admin/pedidos">Gerenciar pedidos</a>
-            </div>
-
-            <div class="card">
-                <span>Unidades em estoque</span>
-                <strong>{{ resumo.estoqueUnidades }}</strong>
-                <a routerLink="/estoque">Consultar estoque</a>
-            </div>
-
-            <div class="card">
-                <span>Valor estimado do estoque</span>
-                <strong>
-                    {{ resumo.valorEstoque | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
-                </strong>
             </div>
         </section>
     }
