@@ -9,7 +9,7 @@ import { ProdutoCatalogo } from '../../models/produto-catalogo';
 @Component({
   selector: 'app-catalogo-component',
   standalone: true,
-  imports: [RouterLink, CurrencyPipe, FormsModule],
+  imports: [RouterLink, FormsModule],
   templateUrl: './catalogo-component.html',
   styleUrl: './catalogo-component.css',
 })

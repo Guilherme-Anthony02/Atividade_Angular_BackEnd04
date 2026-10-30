@@ -54,7 +54,7 @@
                         </p>
 
                         <span>
-                            {{ carrinho.preco(item.produto) | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+                            {{ carrinho.preco(item.produto) }}
                             por unidade
                         </span>
                     </div>
@@ -75,7 +75,7 @@
                     <strong>
                         {{
                             (carrinho.preco(item.produto) * item.quantidade)
-                                | currency:'BRL':'symbol':'1.2-2':'pt-BR'
+                               
                         }}
                     </strong>
 
@@ -101,7 +101,7 @@
 
             <h2>
                 Total:
-                {{ carrinho.valorTotal() | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+                {{ carrinho.valorTotal() }}
             </h2>
 
             <p>

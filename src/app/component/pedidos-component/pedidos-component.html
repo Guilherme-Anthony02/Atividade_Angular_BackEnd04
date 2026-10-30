@@ -31,7 +31,7 @@
         <p>
             {{ carrinho.quantidadeTotal() }} unidade(s) no carrinho -
             total
-            {{ carrinho.valorTotal() | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+            {{ carrinho.valorTotal() }}
         </p>
 
         <div class="campos">
@@ -115,7 +115,7 @@
 
                             <p>
                                 Total:
-                                {{ pedido.total | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+                                {{ pedido.total }}
                             </p>
                         </div>
 
@@ -152,16 +152,16 @@
                     <p>
                         {{ item.produto }} -
                         {{ item.quantidade }} x
-                        {{ item.valorUnitario | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+                        {{ item.valorUnitario }}
                         =
-                        {{ item.subtotal | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+                        {{ item.subtotal }}
                     </p>
 
                 }
 
                 <strong>
                     Total:
-                    {{ pedidoSelecionado.total | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+                    {{ pedidoSelecionado.total }}
                 </strong>
 
             </div>

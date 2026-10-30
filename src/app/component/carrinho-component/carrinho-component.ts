@@ -6,7 +6,7 @@ import { CarrinhoService } from '../../service/carrinho-service';
 @Component({
   selector: 'app-carrinho-component',
   standalone: true,
-  imports: [CurrencyPipe, RouterLink],
+  imports: [RouterLink],
   templateUrl: './carrinho-component.html',
   styleUrl: './carrinho-component.css',
 })

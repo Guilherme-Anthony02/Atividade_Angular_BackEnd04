@@ -10,7 +10,6 @@ import { PedidosService } from '../../service/pedidos-service';
     selector: 'app-pedidos-component',
     standalone: true,
     imports: [
-        CurrencyPipe,
         DatePipe,
         FormsModule,
         RouterLink
