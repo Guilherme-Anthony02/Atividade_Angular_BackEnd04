@@ -1,0 +1,81 @@
+.entrada {
+    max-width: 750px;
+    margin: auto;
+    padding: 32px 20px;
+    color: #24332c
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center
+}
+
+header p {
+    color: #38745a;
+    font-weight: 700;
+    letter-spacing: .1em
+}
+
+header a {
+    color: #2e624b
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 22px;
+    margin-top: 24px;
+    border: 1px solid #dce5df;
+    border-radius: 12px
+}
+
+label {
+    display: grid;
+    gap: 6px
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #bdcbc2;
+    border-radius: 7px
+}
+
+button {
+    grid-column: 1/-1;
+    padding: 12px;
+    border: 0;
+    border-radius: 8px;
+    background: #2e624b;
+    color: white;
+    cursor: pointer
+}
+
+button:disabled {
+    opacity: .5
+}
+
+.sucesso {
+    color: #246b43
+}
+
+.erro {
+    color: #a32e2e
+}
+
+@media(max-width:600px) {
+    form {
+        grid-template-columns: 1fr
+    }
+
+    button {
+        grid-column: auto
+    }
+
+    header {
+        align-items: flex-start;
+        flex-direction: column
+    }
+}

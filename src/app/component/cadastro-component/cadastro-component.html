@@ -6,16 +6,15 @@
 
   <form id="form-cadastro" (ngSubmit)="enviaDadosPessoa()">
     <label for="nome">Nome</label>
-    <input type="text" name="nome" id="nome" class="input01"
-      [(ngModel)]="nome" required maxlength="120" placeholder="Informe o nome do cliente">
+    <input type="text" name="nome" id="nome" class="input01" [(ngModel)]="nome" required maxlength="120"
+      placeholder="Informe o nome do cliente">
 
     <label for="cpf">CPF (somente números)</label>
-    <input type="number" name="cpf" id="cpf" class="input01"
-      [(ngModel)]="cpf" required placeholder="Informe o CPF do cliente">
+    <input type="number" name="cpf" id="cpf" class="input01" [(ngModel)]="cpf" required
+      placeholder="Informe o CPF do cliente">
 
     <label for="dataNascimento">Data de nascimento</label>
-    <input type="date" name="dataNascimento" id="dataNascimento" class="input01"
-      [(ngModel)]="dataNascimento" required>
+    <input type="date" name="dataNascimento" id="dataNascimento" class="input01" [(ngModel)]="dataNascimento" required>
 
     <label for="sexo">Sexo</label>
     <select name="sexo" id="sexo" class="input01" [(ngModel)]="sexo" required>
@@ -26,12 +25,12 @@
     </select>
 
     <label for="email">E-mail</label>
-    <input type="email" name="email" id="email" class="input01"
-      [(ngModel)]="email" required maxlength="120" placeholder="Informe o e-mail do cliente">
+    <input type="email" name="email" id="email" class="input01" [(ngModel)]="email" required maxlength="120"
+      placeholder="Informe o e-mail do cliente">
 
     <label for="telefone">Telefone (somente números)</label>
-    <input type="number" name="telefone" id="telefone" class="input01"
-      [(ngModel)]="telefone" required placeholder="Informe o telefone do cliente">
+    <input type="number" name="telefone" id="telefone" class="input01" [(ngModel)]="telefone" required
+      placeholder="Informe o telefone do cliente">
 
     <h3>Endereço (opcional)</h3>
     <label for="cep">CEP</label>

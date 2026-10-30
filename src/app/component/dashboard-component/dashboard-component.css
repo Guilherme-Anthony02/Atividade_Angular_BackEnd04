@@ -1,0 +1,54 @@
+.dashboard {
+    max-width: 1100px;
+    margin: auto;
+    padding: 32px 20px;
+    color: #24332c
+}
+
+header p {
+    color: #38745a;
+    font-weight: 700;
+    letter-spacing: .12em
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 28px 0
+}
+
+.cards article {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 22px;
+    border: 1px solid #dce5df;
+    border-radius: 12px
+}
+
+.cards span {
+    color: #65746b
+}
+
+.cards strong {
+    font-size: 1.8rem
+}
+
+.cards a,
+nav a {
+    color: #2e624b
+}
+
+nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 18px;
+    background: #f0f6f1;
+    border-radius: 10px
+}
+
+.erro {
+    color: #a32e2e
+}

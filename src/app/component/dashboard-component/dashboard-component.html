@@ -1,0 +1,64 @@
+<main class="dashboard">
+    <header>
+        <p>ESTÉTICA &amp; BEM-ESTAR</p>
+        <h1>Painel administrativo</h1>
+        <span>Resumo com dados da API</span>
+    </header>
+
+    @if (carregando) {
+        <p>Carregando indicadores...</p>
+    }
+
+    @if (erro) {
+        <p class="erro" role="alert">{{ erro }}</p>
+    }
+
+    @if (!carregando && !erro) {
+        <section class="cards">
+            <div class="card">
+                <span>Clientes</span>
+                <strong>{{ resumo.clientes }}</strong>
+                <a routerLink="/listapessoa">Ver clientes</a>
+            </div>
+
+            <div class="card">
+                <span>Produtos</span>
+                <strong>{{ resumo.produtos }}</strong>
+                <a routerLink="/catalogo">Ver catálogo</a>
+            </div>
+
+            <div class="card">
+                <span>Serviços</span>
+                <strong>{{ resumo.servicos }}</strong>
+            </div>
+
+            <div class="card">
+                <span>Pedidos</span>
+                <strong>{{ resumo.pedidos }}</strong>
+                <a routerLink="/admin/pedidos">Gerenciar pedidos</a>
+            </div>
+
+            <div class="card">
+                <span>Unidades em estoque</span>
+                <strong>{{ resumo.estoqueUnidades }}</strong>
+                <a routerLink="/estoque">Consultar estoque</a>
+            </div>
+
+            <div class="card">
+                <span>Valor estimado do estoque</span>
+                <strong>
+                    {{ resumo.valorEstoque | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+                </strong>
+            </div>
+        </section>
+    }
+
+    <nav>
+        <a routerLink="/home">Home</a>
+        <a routerLink="/catalogo">Catálogo</a>
+        <a routerLink="/carrinho">Carrinho</a>
+        <a routerLink="/pedidos">Pedidos do cliente</a>
+        <a routerLink="/estoque">Estoque</a>
+        <a routerLink="/estoque/entrada">Entrada de mercadorias</a>
+    </nav>
+</main>

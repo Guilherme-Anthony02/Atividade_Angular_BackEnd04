@@ -1,0 +1,115 @@
+.pedidos {
+    max-width: 1000px;
+    margin: auto;
+    padding: 32px 20px;
+    color: #24332c
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px
+}
+
+.marca {
+    color: #38745a;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .12em
+}
+
+.topo a {
+    color: #2e624b
+}
+
+.painel {
+    margin: 18px 0;
+    padding: 22px;
+    border: 1px solid #dce5df;
+    border-radius: 12px;
+    background: #fff
+}
+
+.campos {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap
+}
+
+.campos label,
+form label {
+    display: grid;
+    gap: 6px;
+    margin: 8px 0
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #bdcbc2;
+    border-radius: 7px
+}
+
+button {
+    padding: 11px 16px;
+    border: 0;
+    border-radius: 7px;
+    background: #2e624b;
+    color: #fff;
+    cursor: pointer
+}
+
+button:disabled {
+    opacity: .5;
+    cursor: not-allowed
+}
+
+.secundario {
+    background: #6c7b71
+}
+
+.observacao {
+    color: #65746b;
+    font-size: .9rem
+}
+
+.sucesso {
+    color: #246b43
+}
+
+.erro {
+    color: #a32e2e
+}
+
+.pedido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #e3eae5
+}
+
+.pedido p {
+    margin: 5px 0
+}
+
+.detalhes {
+    margin-top: 18px;
+    padding: 16px;
+    background: #f0f6f1;
+    border-radius: 8px
+}
+
+@media(max-width:650px) {
+    .topo {
+        align-items: flex-start;
+        flex-direction: column
+    }
+
+    .pedido {
+        align-items: flex-start;
+        flex-direction: column
+    }
+}

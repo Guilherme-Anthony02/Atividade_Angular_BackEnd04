@@ -1,0 +1,173 @@
+<main class="pedidos">
+
+    <header class="topo">
+        <div>
+            <p class="marca">ESTÉTICA &amp; BEM-ESTAR</p>
+            <h1>Pedidos</h1>
+            <p>Finalize a compra e consulte pedidos registrados.</p>
+        </div>
+
+        <a routerLink="/carrinho">
+            Voltar ao carrinho
+        </a>
+    </header>
+
+    @if (mensagem) {
+        <p class="sucesso" role="status">
+            {{ mensagem }}
+        </p>
+    }
+
+    @if (erro) {
+        <p class="erro" role="alert">
+            {{ erro }}
+        </p>
+    }
+
+    <section class="painel">
+
+        <h2>Confirmar compra</h2>
+
+        <p>
+            {{ carrinho.quantidadeTotal() }} unidade(s) no carrinho -
+            total
+            {{ carrinho.valorTotal() }}
+        </p>
+
+        <div class="campos">
+
+            <label>
+                ID do cliente cadastrado
+
+                <input
+                    type="number"
+                    min="1"
+                    [(ngModel)]="idPessoa"
+                >
+            </label>
+
+            <label>
+                ID do funcionario responsavel
+
+                <input
+                    type="number"
+                    min="1"
+                    [(ngModel)]="idFuncionario"
+                >
+            </label>
+
+        </div>
+
+        <button
+            type="button"
+            [disabled]="carregando || carrinho.listar().length === 0"
+            (click)="confirmar()"
+        >
+            {{ carregando ? 'Registrando...' : 'Confirmar pedido' }}
+        </button>
+
+    </section>
+
+    <section class="painel">
+
+        <h2>Consultar pedidos do cliente</h2>
+
+        <form (ngSubmit)="consultarCliente()">
+
+            <label for="idConsulta">
+                ID do cliente
+            </label>
+
+            <input
+                id="idConsulta"
+                name="idConsulta"
+                type="number"
+                min="1"
+                [(ngModel)]="idConsulta"
+            >
+
+            <button
+                type="submit"
+                [disabled]="carregando"
+            >
+                Consultar
+            </button>
+
+        </form>
+
+        @if (pedidos.length > 0) {
+
+            <div class="lista">
+
+                @for (pedido of pedidos; track pedido.idPedido) {
+
+                    <article class="pedido">
+
+                        <div>
+                            <strong>
+                                Pedido #{{ pedido.idPedido }}
+                            </strong>
+
+                            <p>
+                                Data: {{ pedido.data | date:'dd/MM/yyyy' }}
+                                - Situacao: {{ pedido.situacao }}
+                            </p>
+
+                            <p>
+                                Total:
+                                {{ pedido.total }}
+                            </p>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="secundario"
+                            (click)="verDetalhes(pedido.idPedido)"
+                        >
+                            Ver detalhes
+                        </button>
+
+                    </article>
+
+                }
+
+            </div>
+
+        } @else if (!carregando) {
+
+            <p>Informe um cliente e consulte os pedidos.</p>
+
+        }
+
+        @if (pedidoSelecionado) {
+
+            <div class="detalhes">
+
+                <h3>
+                    Detalhes do pedido #{{ pedidoSelecionado.idPedido }}
+                </h3>
+
+                @for (item of pedidoSelecionado.itens; track item.idItem) {
+
+                    <p>
+                        {{ item.produto }} -
+                        {{ item.quantidade }} x
+                        {{ item.valorUnitario }}
+                        =
+                        {{ item.subtotal }}
+                    </p>
+
+                }
+
+                <strong>
+                    Total:
+                    {{ pedidoSelecionado.total }}
+                </strong>
+
+            </div>
+
+        }
+
+    </section>
+
+</main>

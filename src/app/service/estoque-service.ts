@@ -5,7 +5,7 @@ import { EstoqueItem } from '../models/estoque';
 
 @Injectable({ providedIn: 'root' })
 export class EstoqueService {
-  private readonly api = 'http://localhost:5295/api/Estoque';
+  private readonly api = '';
 
   constructor(private http: HttpClient) {}
 

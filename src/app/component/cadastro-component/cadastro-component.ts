@@ -31,7 +31,7 @@ export class Cadastro implements OnInit {
     private cadastroService: CadastroService,
     private route: ActivatedRoute,
     private router: Router,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -102,8 +102,6 @@ export class Cadastro implements OnInit {
         : 'Não foi possível salvar o cliente. Verifique os dados e se a API está em execução.';
     };
 
-    // Mantemos as chamadas separadas porque cada método retorna um Observable
-    // com tipo diferente (Pessoa no POST e void no PUT).
     if (this.editar) {
       this.cadastroService.alterarPessoa(pessoa).subscribe({
         next: aoSalvar,

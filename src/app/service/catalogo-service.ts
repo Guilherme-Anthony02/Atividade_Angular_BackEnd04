@@ -5,7 +5,7 @@ import { ProdutoCatalogo } from '../models/produto-catalogo';
 
 @Injectable({ providedIn: 'root' })
 export class CatalogoService {
-  private readonly urlApi = 'http://localhost:5295/api/ProdutoItem';
+  private readonly urlApi = 'https://localhost:7077/api/ProdutoItem';
 
   constructor(private http: HttpClient) {}
 
