@@ -7,7 +7,7 @@ import { PedidosService } from '../../service/pedidos-service';
 @Component({
   selector: 'app-admin-pedidos-component',
   standalone: true,
-  imports: [FormsModule, CurrencyPipe, DatePipe, RouterLink],
+  imports: [FormsModule, RouterLink],
   templateUrl: './admin-pedidos-component.html',
   styleUrl: './admin-pedidos-component.css',
 })
