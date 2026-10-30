@@ -44,7 +44,7 @@ export class EntradaEstoqueComponent {
         this.carregando = true;
 
         this.http.post<any>(
-            'http://localhost:5295/api/MovimentacaoEstoque/entrada',
+            'https://localhost:7077/api/MovimentacaoEstoque/entrada',
             {
                 idItem: Number(this.idItem),
                 quantidade: Number(this.quantidade),
