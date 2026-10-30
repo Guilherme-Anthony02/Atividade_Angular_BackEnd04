@@ -1,40 +1,65 @@
 <main class="dashboard">
-    <header>
-        <p>ESTÉTICA &amp; BEM-ESTAR</p>
-        <h1>Painel administrativo</h1>
-        <span>Resumo com dados da API</span>
-    </header>
 
-    @if (carregando) {
-        <p>Carregando indicadores...</p>
-    }
+  <header class="cabecalho">
+    <p>ESTÉTICA &amp; BEM-ESTAR</p>
 
-    @if (erro) {
-        <p class="erro" role="alert">{{ erro }}</p>
-    }
+    <h1>Painel administrativo</h1>
 
-    @if (!carregando && !erro) {
-        <section class="cards">
-            <div class="card">
-                <span>Clientes cadastrados</span>
-                <strong>{{ resumo.clientes }}</strong>
-                <a routerLink="/listapessoa">Ver clientes</a>
-            </div>
+    <span>Resumo dos dados cadastrados</span>
+  </header>
 
-            <div class="card">
-                <span>Produtos cadastrados</span>
-                <strong>{{ resumo.produtos }}</strong>
-                <a routerLink="/catalogo">Ver catálogo</a>
-            </div>
-        </section>
-    }
+  @if (carregando) {
+    <p class="mensagem">
+      Carregando indicadores...
+    </p>
+  }
 
-    <nav>
-        <a routerLink="/home">Home</a>
-        <a routerLink="/catalogo">Catálogo</a>
-        <a routerLink="/carrinho">Carrinho</a>
-        <a routerLink="/pedidos">Pedidos do cliente</a>
-        <a routerLink="/estoque">Estoque</a>
-        <a routerLink="/estoque/entrada">Entrada de mercadorias</a>
-    </nav>
+  @if (erro) {
+    <p class="erro" role="alert">
+      {{ erro }}
+    </p>
+  }
+
+  <section class="cards">
+
+    <div class="card">
+      <span>Clientes cadastrados</span>
+
+      <strong>{{ resumo.clientes }}</strong>
+
+      <a routerLink="/listapessoa">
+        Ver clientes
+      </a>
+    </div>
+
+    <div class="card">
+      <span>Produtos cadastrados</span>
+
+      <strong>{{ resumo.produtos }}</strong>
+
+      <a routerLink="/catalogo">
+        Ver catálogo
+      </a>
+    </div>
+
+  </section>
+
+  <nav class="navegacao">
+
+    <a routerLink="/home">Home</a>
+
+    <a routerLink="/catalogo">Catálogo</a>
+
+    <a routerLink="/carrinho">Carrinho</a>
+
+    <a routerLink="/pedidos">Pedidos do cliente</a>
+
+    <a routerLink="/estoque">Estoque</a>
+
+    <a routerLink="/estoque/entrada">
+      Entrada de mercadorias
+    </a>
+
+  </nav>
+
 </main>
