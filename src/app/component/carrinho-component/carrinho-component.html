@@ -54,7 +54,7 @@
                         </p>
 
                         <span>
-                            {{ carrinho.preco(item.produto) }}
+                            R$ {{ carrinho.preco(item.produto) }}
                             por unidade
                         </span>
                     </div>
@@ -73,7 +73,7 @@
                     </label>
 
                     <strong>
-                        {{
+                        R$ {{
                             (carrinho.preco(item.produto) * item.quantidade)
                                
                         }}
@@ -96,12 +96,12 @@
         <section class="resumo">
 
             <span>
-                {{ carrinho.quantidadeTotal() }} unidade(s)
+               {{ carrinho.quantidadeTotal() }} unidade(s)
             </span>
 
             <h2>
                 Total:
-                {{ carrinho.valorTotal() }}
+               R$ {{ carrinho.valorTotal() }}
             </h2>
 
             <p>

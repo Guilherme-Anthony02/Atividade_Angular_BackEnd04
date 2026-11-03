@@ -8,7 +8,6 @@ import { RouterLink } from '@angular/router';
     selector: 'app-servicos-component',
     standalone: true,
     imports: [
-        CurrencyPipe,
         FormsModule,
         RouterLink
     ],
